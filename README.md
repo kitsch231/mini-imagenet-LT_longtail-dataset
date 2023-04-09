@@ -1,4 +1,5 @@
 # mini-imagenet-LT_longtail-dataset
+完整数据集下载：https://huggingface.co/datasets/KITSCH/miniimagenet-LT/tree/main
 长尾数据集的分类任务是一个较为常见的话题，但是数据集整理较为麻烦，并且有些数据集例如Imagenet-LT相对来说还是太多，算力不够的情况下做实验成本较高。因此我根据mini-Imagenet重新整理出了mini-Imagenet-LT长尾数据集。并且使用了RSG模型和stable diffusion扩充数据集两种方法进行性能上的对比。
 RSG方法,allacc:72.62%  headacc:75.91%  middleacc:62.45%  tailacc:50.83%
 SD方法,allacc:75.88%  headacc:79.36%  middleacc:64.31%  tailacc:56.25%
@@ -10,7 +11,7 @@ SD方法,allacc:75.88%  headacc:79.36%  middleacc:64.31%  tailacc:56.25%
 
 3.使用stable diffusion扩充我们的长尾数据集，讲每个类别的图片数量从10-480补齐到480张，生成的图片在genimages文件夹加，标签路径文件为gentrain.csv。具体生成方法我们使用图生图的方式，以某图片及其标签作为prompt对现在的图片轮流生成直到补齐480张为止。（由于seed的随机性或图片的问题，生成的图片有部分为损坏的纯黑图片，在下游任务中记得做筛选去除）。语义标签保存在classname.txt中。
 
-
+Complete dataset download: https://huggingface.co/datasets/KITSCH/miniimagenet-LT/tree/main
 The classification task of long-tail data sets is a relatively common topic, but the data set sorting is more troublesome, and some data sets such as Imagenet-LT are relatively too much, and the cost of experimentation is high when the computing power is not enough. So I rearranged the mini-Imagenet-LT long-tail dataset based on mini-Imagenet. And use the RSG model and stable diffusion to expand the data set two methods for performance comparison.
 RSG method, allacc: 72.62 headacc: 75.91 middleacc: 62.45 tailacc: 50.83
 SD method, allacc: 75.88 headacc: 79.36 middleacc: 64.31 tailacc: 56.25
